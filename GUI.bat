@@ -19,7 +19,7 @@ goto start
 
 :mp4
 set /p link="Please insert the link: "
-youtube-dl.exe %link%
+youtube-dl.exe %link% -f bestvideo,bestaudio
 set /p link="Push enter to continue...."
 cls
 goto start
@@ -32,5 +32,5 @@ cls
 goto start
 
 :update
-bitsadmin.exe /transfer debjob /download /priority normal https://youtube-dl.org/downloads/latest/youtube-dl.exe "C:\Users\root\Desktop\projects\YouTube Downloder\youtube-dl.exe"
+youtube-dl.exe -U
 goto start
