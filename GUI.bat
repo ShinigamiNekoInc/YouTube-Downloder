@@ -19,7 +19,7 @@ goto start
 
 :mp4
 set /p link="Please insert the link: "
-youtube-dl.exe %link% -f bestvideo,bestaudio
+youtube-dl %link%
 set /p link="Push enter to continue...."
 cls
 goto start
