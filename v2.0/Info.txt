@@ -1,1 +1,1 @@
-auto-py-to-exe
+cmd -> auto-py-to-exe
