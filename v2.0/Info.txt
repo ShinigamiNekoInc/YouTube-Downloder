@@ -1,1 +1,4 @@
 cmd -> auto-py-to-exe
+
+pip list --outdated
+pip install --upgrade auto-py-to-exe
