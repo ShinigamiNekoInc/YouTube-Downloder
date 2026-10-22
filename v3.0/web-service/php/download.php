@@ -1,7 +1,7 @@
 <?php
-// Configuration
-$pythonPath = 'C:\inetpub\libs\pythoncore-3.14-64\python.exe';
-$python_script = 'C:\inetpub\wwwroot\projects\youtubedl\download_web.py';
+require_once __DIR__ . '/config.php';
+
+$python_script = $cleanupScript = $baseDir . '\python\download_web.py';
 $downloads_dir = __DIR__ . '/../downloads';
 
 // Ensure downloads directory exists

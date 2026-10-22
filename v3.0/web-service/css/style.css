@@ -113,25 +113,65 @@ header h1 {
 }
 
 .settings-section {
-    margin-bottom: 2.5rem;
-    text-align: left;
+    margin: 3rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
 }
 
 .settings-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 1.5rem;
 }
 
 .settings-header span {
-    font-size: 1rem;
-    color: #a0a0c0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-purple);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .settings-controls {
+    width: 100%;
+}
+
+.settings-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.settings-table td {
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.settings-table tr:last-child td {
+    border-bottom: none;
+}
+
+.settings-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.settings-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: #b0b0d0;
+    width: 65%;
+}
+
+.settings-table td:last-child {
+    text-align: right;
     display: flex;
-    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .btn-group-item {
@@ -144,7 +184,20 @@ header h1 {
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 6px;
+}
+
+.btn-icon {
+    padding: 8px !important;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-icon:hover {
+    transform: scale(1.1);
 }
 
 .btn-group-item:hover {

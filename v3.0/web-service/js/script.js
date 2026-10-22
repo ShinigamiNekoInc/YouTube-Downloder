@@ -3,6 +3,30 @@ const statusDiv = document.getElementById('status');
 const type = urlParams.get('type');
 const taskId = urlParams.get('task_id');
 
+// Fetch folder size and update UI
+async function updateDownloadSize() {
+    try {
+        const response = await fetch('php/get_folder_size.php');
+        const data = await response.json();
+        const sizeDisplay = document.getElementById('download_size');
+        if (sizeDisplay) {
+            let sizeStr = "";
+            if (data.bytes > 1024 * 1024 * 1024) {
+                sizeStr = (data.bytes / (1024 * 1024 * 1024)).toFixed(2) + " GB";
+            } else {
+                sizeStr = (data.bytes / (1024 * 1024)).toFixed(2) + " MB";
+            }
+            sizeDisplay.innerText = sizeStr;
+        }
+    } catch (e) {
+        console.error("Error fetching folder size:", e);
+    }
+}
+
+if (document.getElementById('download_size')) {
+    updateDownloadSize();
+}
+
 if (type === 'started' && taskId) {
     statusDiv.style.display = 'block';
     const statusMsg = document.getElementById('status_msg');
@@ -56,18 +80,18 @@ if (type === 'started' && taskId) {
             const response = await fetch(`php/status.php?task_id=${taskId}`);
             const data = await response.json();
 
-            if (data.status === 'completed') {
-                clearInterval(pollStatus);
-                const statusMsg = document.getElementById('status_msg');
-                const successIcon = document.getElementById('success_icon');
-                if (statusMsg) statusMsg.innerText = "Update Complete!";
-                if (successIcon) successIcon.style.display = 'block';
-            } else if (data.status === 'error') {
-                clearInterval(pollStatus);
-                const statusMsg = document.getElementById('status_msg');
-                if (statusMsg) statusMsg.innerText = "Update Error: " + data.message;
-                statusDiv.className = 'error';
-            }
+             if (data.status === 'completed') {
+                 clearInterval(pollStatus);
+                 const statusMsg = document.getElementById('status_msg');
+                 const successIcon = document.getElementById('success_icon');
+                 if (statusMsg) statusMsg.innerText = "Update Complete!";
+                 if (successIcon) successIcon.style.display = 'block';
+             } else if (data.status === 'error') {
+                 clearInterval(pollStatus);
+                 const statusMsg = document.getElementById('status_msg');
+                 if (statusMsg) statusMsg.innerText = "Update Error: " + data.message;
+                 statusDiv.className = 'error';
+             }
         } catch (e) {
             console.error("Polling error:", e);
         }

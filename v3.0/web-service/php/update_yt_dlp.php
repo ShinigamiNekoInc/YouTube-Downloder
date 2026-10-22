@@ -1,7 +1,7 @@
 <?php
-// Configuration (Mirroring download.php)
-$pythonPath = 'C:\inetpub\libs\pythoncore-3.14-64\python.exe';
-$updateScript = 'C:\inetpub\wwwroot\projects\youtubedl\update_yt_dlp.py';
+require_once __DIR__ . '/config.php';
+
+$updateScript = $baseDir . '\python\update_yt_dlp.py';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Generate a unique Task ID for the update process

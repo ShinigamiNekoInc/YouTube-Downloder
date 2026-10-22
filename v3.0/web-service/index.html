@@ -23,21 +23,37 @@
         </section>
 
         <div class="divider">
-            <i class="fas fa-sliders-h"></i>
+            <i class="fas fa-sliders-h"> System Settings</i>
         </div>
 
-        <section class="settings-section">
-            <div class="settings-header">
-                <span>System Settings</span>
-                <div class="settings-controls">
-                    <form action="php/update_yt_dlp.php" method="POST">
-                        <button type="submit" class="btn-group-item">
-                            <i class="fas fa-cog"></i> Update ytl
-                        </button>
-                    </form>
-                </div>
+        
+            <div class="settings-controls">
+                <table class="settings-table">
+                    <tbody>
+                        <tr>
+                            <td>Update ytl-dl</td>
+                            <td>
+                                <form action="php/update_yt_dlp.php" method="POST">
+                                    <button type="submit" class="btn-group-item btn-icon" title="Update Now">
+                                        <i class="fas fa-sync"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Downloads (<span id="download_size">Calculating...</span>)</td>
+                            <td>
+                                <form action="php/cleanup.php" method="POST">
+                                    <button type="submit" class="btn-group-item btn-icon" title="Clear Downloads">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
+        
 
         <div id="status" class="status-card">
             <!-- Status content will be injected here by JS -->
