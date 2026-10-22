@@ -9,7 +9,7 @@ if sys.stdout.encoding != 'utf-8':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 def update_task_status(task_id: str, status: str, extra_data: dict = None):
-    tasks_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tasks')
+    tasks_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tasks')
     os.makedirs(tasks_dir, exist_ok=True)
     task_file = os.path.join(tasks_dir, f"{task_id}.json")
     
@@ -35,7 +35,7 @@ def download_best_video(url: str, output_dir: str = './downloads', task_id: str 
         'outtmpl': os.path.join(output_dir, '%(title)s.%(ext)s'),
         'merge_output_format': 'mkv',
         # Path to ffmpeg.exe folder (replace with your path!)
-        'ffmpeg_location': os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ffmpeg', 'bin'),
+        'ffmpeg_location': os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'ffmpeg', 'bin'),
     }
 
     try:
@@ -57,7 +57,7 @@ def download_best_video(url: str, output_dir: str = './downloads', task_id: str 
     finally:
         # Cleanup the task file after finishing or failing
         if task_id:
-            tasks_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tasks')
+            tasks_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tasks')
             task_file = os.path.join(tasks_dir, f"{task_id}.json")
             if os.path.exists(task_file):
                 # Note: If we delete it immediately on completion, the frontend might 

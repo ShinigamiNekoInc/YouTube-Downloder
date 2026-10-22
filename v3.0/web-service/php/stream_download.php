@@ -1,6 +1,6 @@
 <?php
 // Configuration
-$downloads_dir = __DIR__ . '/downloads';
+$downloads_dir = __DIR__ . '/../downloads';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['file'])) {
     $filename = basename($_GET['file']); // Use basename to prevent directory traversal attacks

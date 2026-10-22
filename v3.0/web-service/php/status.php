@@ -1,5 +1,5 @@
 <?php
-$tasks_dir = __DIR__ . '/tasks';
+$tasks_dir = __DIR__ . '/../tasks';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['task_id'])) {
     $task_id = basename($_GET['task_id']); // Prevent directory traversal

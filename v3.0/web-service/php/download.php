@@ -2,7 +2,7 @@
 // Configuration
 $pythonPath = 'C:\inetpub\libs\pythoncore-3.14-64\python.exe';
 $python_script = 'C:\inetpub\wwwroot\projects\youtubedl\download_web.py';
-$downloads_dir = __DIR__ . '/downloads';
+$downloads_dir = __DIR__ . '/../downloads';
 
 // Ensure downloads directory exists
 if (!file_exists($downloads_dir)) {
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['video_url'])) {
 
     // Generate a unique Task ID
     $task_id = uniqid('task_', true);
-    $tasks_dir = __DIR__ . '/tasks';
+    $tasks_dir = __DIR__ . '/../tasks';
     if (!file_exists($tasks_dir)) {
         mkdir($tasks_dir, 0777, true);
     }
@@ -34,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['video_url'])) {
     pclose(popen($command, "r"));
 
     // Redirect to index.html with the Task ID so frontend can start polling
-    header("Location: index.html?type=started&task_id=" . urlencode($task_id));
+    header("Location: ./../index.html?type=started&task_id=" . urlencode($task_id));
     exit;
 } else {
-    header("Location: index.html");
+    header("Location: ./../index.html");
     exit;
 }

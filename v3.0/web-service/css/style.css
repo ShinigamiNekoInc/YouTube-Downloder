@@ -1,0 +1,205 @@
+:root {
+    --bg-color: #0a0a12;
+    --card-bg: #16162d;
+    --text-color: #e0e0e0;
+    --accent-purple: #a570f1;
+    --accent-cyan: #00f2ff;
+    --input-bg: #1f1f3d;
+    --border-color: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(circle at center, #1a1a40, #0a0a12);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 3rem;
+    border-radius: 40px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(165, 112, 241, 0.05);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+header h1 {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #7b9ff2, #a570f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-section {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.input-section label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: #a0a0c0;
+}
+
+.input-section input[type="url"] {
+    width: 100%;
+    padding: 16px 20px;
+    border-radius: 18px;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg);
+    color: white;
+    box-sizing: border-box;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.input-section input[type="url"]:focus {
+    outline: none;
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 15px rgba(165, 112, 241, 0.2);
+}
+
+.main-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--accent-purple);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(165, 112, 241, 0.4);
+}
+
+.main-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 12px 30px rgba(165, 112, 241, 0.5);
+}
+
+.divider {
+    margin: 2.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+}
+
+.divider i {
+    padding: 0 20px;
+    font-size: 1.2rem;
+    color: #606080;
+}
+
+.settings-section {
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.settings-header span {
+    font-size: 1rem;
+    color: #a0a0c0;
+}
+
+.settings-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-group-item {
+    padding: 8px 16px;
+    border-radius: 12px;
+    background-color: #25254a;
+    color: white;
+    border: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-group-item:hover {
+    background-color: #30306a;
+}
+
+.status-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.status-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #81c784;
+}
+
+.success-icon {
+    font-size: 1.2rem;
+}
+
+.download-file-btn {
+    padding: 16px 32px;
+    background-color: var(--accent-cyan);
+    color: #0a0a12;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.download-file-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 6px 25px rgba(0, 242, 255, 0.6);
+}
+
+/* Hide status by default */
+#status {
+    display: none;
+}
+
+#status.active {
+    display: block;
+}
