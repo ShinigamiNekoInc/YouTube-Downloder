@@ -35,7 +35,8 @@ if (type === 'started' && taskId) {
     if (statusMsg) statusMsg.innerText = "Download started. Please wait...";
     if (downloadLink) downloadLink.style.visibility = 'hidden';
     if (successIcon) successIcon.style.display = 'none';
-    statusDiv.className = 'success';
+    statusDiv.classList.remove('status-hidden');
+    statusDiv.classList.add('success');
 
     const pollStatus = setInterval(async () => {
         try {
@@ -58,7 +59,8 @@ if (type === 'started' && taskId) {
                 clearInterval(pollStatus);
                 const statusMsg = document.getElementById('status_msg');
                 if (statusMsg) statusMsg.innerText = "Error: " + data.message;
-                statusDiv.className = 'error';
+                 statusDiv.classList.remove('status-hidden');
+                 statusDiv.classList.add('error');
             }
         } catch (e) {
             console.error("Polling error:", e);
@@ -73,7 +75,8 @@ if (type === 'started' && taskId) {
     if (statusMsg) statusMsg.innerText = "Updating yt-dlp, please wait...";
     if (downloadLink) downloadLink.style.visibility = 'hidden';
     if (successIcon) successIcon.style.display = 'none';
-    statusDiv.className = 'success';
+    statusDiv.classList.remove('status-hidden');
+    statusDiv.classList.add('success');
 
     const pollStatus = setInterval(async () => {
         try {
@@ -90,7 +93,8 @@ if (type === 'started' && taskId) {
                  clearInterval(pollStatus);
                  const statusMsg = document.getElementById('status_msg');
                  if (statusMsg) statusMsg.innerText = "Update Error: " + data.message;
-                 statusDiv.className = 'error';
+                 statusDiv.classList.remove('status-hidden');
+                 statusDiv.classList.add('error');
              }
         } catch (e) {
             console.error("Polling error:", e);
@@ -111,7 +115,8 @@ if (type === 'started' && taskId) {
         downloadLink.style.visibility = 'visible';
         downloadLink.innerText = "Download File";
     }
-    statusDiv.className = 'success';
+    statusDiv.classList.remove('status-hidden');
+    statusDiv.classList.add('success');
 
 } else if (type === 'error') {
     statusDiv.style.display = 'block';
@@ -119,5 +124,6 @@ if (type === 'started' && taskId) {
     const statusMsg = document.getElementById('status_msg');
     if (statusMsg) statusMsg.innerText = message;
     else statusDiv.innerText = message;
-    statusDiv.className = 'error';
+    statusDiv.classList.remove('status-hidden');
+    statusDiv.classList.add('error');
 }

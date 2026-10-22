@@ -206,27 +206,52 @@ header h1 {
 
 .status-card {
     background-color: var(--card-bg);
-    padding: 2rem;
+    padding: 1.5rem 2.5rem;
     border-radius: 30px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 20px rgba(165, 112, 241, 0.1);
+    margin-top: 4rem;
 }
 
 .status-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
 }
 
 .status-info {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: #81c784;
+    gap: 15px;
+}
+
+.status-icon-wrapper {
+    background: rgba(129, 199, 132, 0.1);
+    padding: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(129, 199, 132, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 .success-icon {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: #81c784;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 .download-file-btn {
@@ -248,11 +273,16 @@ header h1 {
     box-shadow: 0 6px 25px rgba(0, 242, 255, 0.6);
 }
 
-/* Hide status by default */
-#status {
+.status-hidden {
     display: none;
 }
 
 #status.active {
     display: block;
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

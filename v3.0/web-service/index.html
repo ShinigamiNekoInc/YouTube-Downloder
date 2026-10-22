@@ -55,14 +55,19 @@
             </div>
         
 
-        <div id="status" class="status-card">
-            <!-- Status content will be injected here by JS -->
+        <div id="status" class="status-card status-hidden">
             <div class="status-content">
-                        <div class="status-info">
-                            <i id="success_icon" class="fas fa-check-circle success-icon"></i>
-                            <span id="status_msg">Download Complete!</span>
-                        </div>
-                        <a href="#" class="download-file-btn" id="download_link">Download File</a>
+                <div class="status-info">
+                    <div class="status-icon-wrapper">
+                        <i id="success_icon" class="fas fa-check-circle success-icon"></i>
+                    </div>
+                    <div class="status-text">
+                        <span id="status_msg">Download Complete!</span>
+                    </div>
+                </div>
+                <a href="#" class="download-file-btn" id="download_link">
+                    <span>Download File</span>
+                </a>
             </div>
         </div>
     </div>
