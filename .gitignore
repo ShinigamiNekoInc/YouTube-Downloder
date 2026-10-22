@@ -104,3 +104,8 @@ dist
 .tern-port
 
 #MyFilter
+
+v3.0/web-service/ffmpeg
+v3.0/python scrypts/ffmpeg
+v3.0/python scrypts/downloads
+v3.0/web-service/downloads
