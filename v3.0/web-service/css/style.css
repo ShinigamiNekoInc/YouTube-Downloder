@@ -220,10 +220,16 @@ header h1 {
     gap: 2rem;
 }
 
+/* Центрирование контента, когда кнопка скрыта */
+.status-card.status-loading .status-content {
+    justify-content: center;
+}
+
 .status-info {
     display: flex;
     align-items: center;
     gap: 15px;
+    flex: 1;
 }
 
 .status-icon-wrapper {
@@ -275,6 +281,10 @@ header h1 {
 
 .status-hidden {
     display: none;
+}
+
+.status-hidden-element {
+    display: none !important;
 }
 
 #status.active {

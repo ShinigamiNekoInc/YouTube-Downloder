@@ -33,10 +33,10 @@ if (type === 'started' && taskId) {
     const downloadLink = document.getElementById('download_link');
     const successIcon = document.getElementById('success_icon');
     if (statusMsg) statusMsg.innerText = "Download started. Please wait...";
-    if (downloadLink) downloadLink.style.visibility = 'hidden';
+    if (downloadLink) downloadLink.classList.add('status-hidden-element');
     if (successIcon) successIcon.style.display = 'none';
     statusDiv.classList.remove('status-hidden');
-    statusDiv.classList.add('success');
+    statusDiv.classList.add('success', 'status-loading');
 
     const pollStatus = setInterval(async () => {
         try {
@@ -50,17 +50,18 @@ if (type === 'started' && taskId) {
                 const successIcon = document.getElementById('success_icon');
                 if (statusMsg) statusMsg.innerText = "Download Complete!";
                 if (successIcon) successIcon.style.display = 'block';
+                statusDiv.classList.remove('status-loading');
                 if (downloadLink) {
+                    downloadLink.classList.remove('status-hidden-element');
                     downloadLink.href = `php/stream_download.php?file=${encodeURIComponent(data.filename)}`;
-                    downloadLink.style.visibility = 'visible';
                     downloadLink.innerText = "Download File";
                 }
             } else if (data.status === 'error') {
                 clearInterval(pollStatus);
                 const statusMsg = document.getElementById('status_msg');
                 if (statusMsg) statusMsg.innerText = "Error: " + data.message;
-                 statusDiv.classList.remove('status-hidden');
-                 statusDiv.classList.add('error');
+                statusDiv.classList.remove('status-hidden', 'status-loading');
+                statusDiv.classList.add('error');
             }
         } catch (e) {
             console.error("Polling error:", e);
@@ -73,10 +74,10 @@ if (type === 'started' && taskId) {
     const downloadLink = document.getElementById('download_link');
     const successIcon = document.getElementById('success_icon');
     if (statusMsg) statusMsg.innerText = "Updating yt-dlp, please wait...";
-    if (downloadLink) downloadLink.style.visibility = 'hidden';
+    if (downloadLink) downloadLink.classList.add('status-hidden-element');
     if (successIcon) successIcon.style.display = 'none';
     statusDiv.classList.remove('status-hidden');
-    statusDiv.classList.add('success');
+    statusDiv.classList.add('success', 'status-loading');
 
     const pollStatus = setInterval(async () => {
         try {
@@ -89,11 +90,12 @@ if (type === 'started' && taskId) {
                  const successIcon = document.getElementById('success_icon');
                  if (statusMsg) statusMsg.innerText = "Update Complete!";
                  if (successIcon) successIcon.style.display = 'block';
+                 statusDiv.classList.remove('status-loading');
              } else if (data.status === 'error') {
                  clearInterval(pollStatus);
                  const statusMsg = document.getElementById('status_msg');
                  if (statusMsg) statusMsg.innerText = "Update Error: " + data.message;
-                 statusDiv.classList.remove('status-hidden');
+                 statusDiv.classList.remove('status-hidden', 'status-loading');
                  statusDiv.classList.add('error');
              }
         } catch (e) {
@@ -111,11 +113,11 @@ if (type === 'started' && taskId) {
     if (statusMsg) statusMsg.innerText = message;
     if (successIcon) successIcon.style.display = 'block';
     if (downloadLink && downloadUrl) {
+        downloadLink.classList.remove('status-hidden-element');
         downloadLink.href = downloadUrl;
-        downloadLink.style.visibility = 'visible';
         downloadLink.innerText = "Download File";
     }
-    statusDiv.classList.remove('status-hidden');
+    statusDiv.classList.remove('status-hidden', 'status-loading');
     statusDiv.classList.add('success');
 
 } else if (type === 'error') {
@@ -124,6 +126,6 @@ if (type === 'started' && taskId) {
     const statusMsg = document.getElementById('status_msg');
     if (statusMsg) statusMsg.innerText = message;
     else statusDiv.innerText = message;
-    statusDiv.classList.remove('status-hidden');
+    statusDiv.classList.remove('status-hidden', 'status-loading');
     statusDiv.classList.add('error');
 }
